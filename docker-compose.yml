@@ -1,0 +1,20 @@
+node:
+  build: ./node
+  container_name: node
+  restart: always
+  ports:
+    - "3000:3000"
+  environment:
+    NODE_ENV: production
+
+caddy:
+  build: ./Caddy
+  container_name: caddy
+  restart: always
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - /etc/.caddy:/root/.caddy
+  links:
+    - node:node

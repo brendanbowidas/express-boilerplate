@@ -1,0 +1,10 @@
+example.com {
+  gzip
+
+  proxy / node:3000 {
+    transparent
+  }
+
+  tls youremail@email.com
+
+}
